@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>特別青少年再教育第一収監所ホームページ</title>
+  <style>
+- {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+      background-color: #313338;
+      color: #f2f3f5;
+      line-height: 1.7;
+    }
+
+    /* 1. 上部ヘッダー */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      background-color: #1e1f22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 20px;
+      border-bottom: 1px solid #2b2d31;
+      z-index: 100;
+    }
+    header h1 {
+      font-size: 1.2rem;
+      color: #ffffff;
+      letter-spacing: 0.05em;
+    }
+
+    /* 2. 左サイドバー */
+    aside {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 220px;
+      height: calc(100vh - 60px);
+      background-color: #00608d;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    aside ul {
+      list-style: none;
+    }
+    aside li {
+      margin-bottom: 10px;
+    }
+    .menu-btn {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: #b5bac1;
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .menu-btn:hover {
+      background-color: #35373c;
+      color: #ffffff;
+    }
+    .menu-btn.active {
+      background-color: #5865f2;
+      color: #ffffff;
+    }
+
+    /* 3. メインコンテンツ */
+    main {
+      margin-top: 30px;
+      margin-left: 220px;
+      padding: 30px;
+      min-height: calc(100vh - 60px);
+    }
+
+    .page-content {
+      display: none;
+      animation: fadeIn 0.25s ease;
+    }
+    .page-content.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* サーバー長挨拶ボックス */
+    .greeting-box {
+      background: linear-gradient(135deg, #2b2820 0%, #2b2d31 100%);
+      border-left: 6px solid #f0b232;
+      padding: 30px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .greeting-box h2 {
+      font-size: 1.4rem;
+      border-bottom: 1px solid rgba(240, 178, 50, 0.3);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #f0b232;
+    }
+    .greeting-content {
+      display: flex;
+      gap: 25px;
+      align-items: flex-start;
+    }
+    .leader-photo-frame {
+      width: 160px;
+      height: 210px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      border: 2px solid #f0b232;
+      overflow: hidden;
+      background-color: #1e1f22;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .leader-photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin: 0;
+    }
+    .greeting-text {
+      flex: 1;
+    }
+    .greeting-text p {
+      color: #f2f3f5;
+      font-size: 0.98rem;
+      margin-bottom: 12px;
+    }
+    .greeting-sign {
+      text-align: right;
+      font-weight: bold;
+      color: #f0b232;
+      margin-top: 15px;
+      font-size: 1rem;
+    }
+
+    /* サーバー概要スタイル */
+    .welcome-box {
+      background: linear-gradient(135deg, #2b2d31 0%, #383a40 100%);
+      border-left: 6px solid #5865f2;
+      padding: 35px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .welcome-box h2 {
+      font-size: 1.5rem;
+      border: none;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .concept-block {
+      margin-bottom: 20px;
+    }
+    .concept-block h3 {
+      font-size: 1.1rem;
+      color: #5865f2;
+      margin-bottom: 6px;
+    }
+    .concept-block p {
+      color: #dbdee1;
+      font-size: 0.95rem;
+    }
+    .recruit-banner {
+      background-color: #232428;
+      border: 2px dashed #5865f2;
+      padding: 15px;
+      border-radius: 6px;
+      margin-top: 25px;
+      text-align: center;
+      font-weight: bold;
+      color: #f47fff;
+    }
+
+    /* 各ページのカードデザイン */
+    .card {
+      background-color: #2b2d31;
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-bottom: 15px;
+      border-bottom: 2px solid #5865f2;
+      padding-bottom: 8px;
+      font-size: 1.3rem;
+    }
+    .btn-link {
+      display: inline-block;
+      background-color: #5865f2;
+      color: white;
+      padding: 10px 24px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .btn-link:hover {
+      background-color: #4752c4;
+    }
+
+    /* 組織図（ツリー図）のデザイン */
+    .org-tree {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 10px;
+    }
+    .org-box {
+      background-color: #1e1f22;
+      border: 2px solid #5865f2;
+      border-radius: 8px;
+      padding: 18px 25px;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+    .org-box.top-role {
+      border-color: #f0b232;
+      background: linear-gradient(180deg, #2b2820 0%, #1e1f22 100%);
+    }
+    .org-role-title {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #5865f2;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+    .top-role .org-role-title {
+      color: #f0b232;
+    }
+    .org-member-name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .org-role-desc {
+      font-size: 0.85rem;
+      color: #b5bac1;
+      margin-top: 6px;
+    }
+    /* 上下の接続ライン */
+    .org-line {
+      width: 2px;
+      height: 35px;
+      background-color: #5865f2;
+    }
+
+    /* よくある質問（FAQ）のデザイン */
+    .faq-item {
+      background-color: #1e1f22;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-left: 4px solid #f0b232;
+    }
+    .faq-q {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #f0b232;
+      margin-bottom: 8px;
+    }
+    .faq-a {
+      font-size: 0.95rem;
+      color: #dbdee1;
+    }
+
+    /* 歴史（タイムライン）のデザイン */
+    .history-list {
+      list-style: none;
+      padding-left: 10px;
+    }
+    .history-item {
+      position: relative;
+      padding-left: 25px;
+      padding-bottom: 24px;
+    }
+    .history-item::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: -10px;
+      width: 2px;
+      background-color: #5865f2;
+    }
+    .history-item:last-child {
+      padding-bottom: 0;
+    }
+    .history-item:last-child::after {
+      display: none;
+    }
+    .history-item::before {
+      content: "";
+      position: absolute;
+      left: -4px;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      background-color: #5865f2;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    .history-date {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #5865f2;
+      margin-bottom: 3px;
+    }
+    .history-text {
+      color: #dbdee1;
+      font-size: 0.98rem;
+    }
+
+    /* 支援者ページのデザイン */
+    .supporter-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .supporter-card {
+      background: linear-gradient(145deg, #27232c 0%, #1e1f22 100%);
+      border: 2px solid #f47fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+    .supporter-badge {
+      display: inline-block;
+      background-color: rgba(244, 127, 255, 0.15);
+      color: #f47fff;
+      font-size: 0.78rem;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .supporter-name {
+      font-size: 1.15rem;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+    .supporter-desc {
+      font-size: 0.9rem;
+      color: #b5bac1;
+    }
+
+    /* スマホ画面用の調整 */
+    @media (max-width: 768px) {
+      aside {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-top: 60px;
+      }
+      main {
+        margin-top: 0;
+        margin-left: 0;
+        padding: 20px;
+      }
+      .greeting-content {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🔒 特別青少年再教育第一収監所ホームページ</h1>
+  </header>
+
+  <!-- 左サイドバー -->
+  <aside>
+    <ul>
+      <li><button class="menu-btn active" onclick="showPage('page-welcome', this)">👋 はじめに</button></li>
+      <li><button class="menu-btn" onclick="showPage('page-org', this)">🏢 組織図</button></li>
+      <li><button class="menu-btn" onclick="showPage('page-history', this)">📜 サーバーの歴史</button></li>
+      <li><button class="menu-btn" onclick="showPage('page-supporters', this)">💎 支援者</button></li>
+      <li><button class="menu-btn" onclick="showPage('page-faq', this)">❓ よくある質問</button></li>
+      <li><button class="menu-btn" onclick="showPage('page-links', this)">🔗 関連リンク</button></li>
+    </ul>
+  </aside>
+
+  <!-- 右下メインコンテンツ -->
+  <main>
+
+    <!-- 1ページ目：はじめに -->
+    <div id="page-welcome" class="page-content active">
+      <div class="greeting-box">
+        <h2>サーバー長挨拶（岸本権蔵）</h2>
+        <div class="greeting-content">
+          <div class="leader-photo-frame">
+            <img src="０１L.jpg" alt="サーバー長写真">
+          </div>
+          <div class="greeting-text">
+            <p>
+              当サーバーへようこそ。サーバー長を務めております。岸本権蔵です。
+              ここは外界の喧騒から切り離された、規律と秩序によって成り立つ特別な空間です。
+            </p>
+            <p>
+              日々の活動を通じて共に時間と空間を共有し、この独特の環境を楽しんでいただければ幸いです。
+              メンバー全員がルールと協調性を重んじることで、他にはない充実したコミュニティが維持されています。
+            </p>
+            <p>
+              まずは下記の「サーバーの概要」をよく読み、当サーバーの理念を理解した上で活動にご参加ください。それでは、良きサーバーライフを。
+            </p>
+            <div class="greeting-sign">サーバー長（岸本権蔵）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="welcome-box">
+        <h2>サーバーの概要</h2>
+
+        <div class="concept-block">
+          <h3>閉鎖的な空間と行動の制限</h3>
+          <p>物理的な校舎は外界から遮断された空間であり、登下校時間や授業時間など厳格な時間割と規則によって生徒の行動が厳しく管理されます。これは、収監施設における自由の制限と閉じ込められた状態に喩えられます。</p>
+        </div>
+
+        <div class="concept-block">
+          <h3>監視体制と画一化</h3>
+          <p>教師や学校側の監視・指導が生徒の個性や自由な発想を抑圧し、社会の求める「優等生」という画一的な型に嵌め込もうとする教育システムが、刑罰による矯正のように捉えられます。</p>
+        </div>
+
+        <div class="concept-block">
+          <h3>強制的な生活</h3>
+          <p>自分の意思に関わらず、義務としてそこに存在し、集団での活動や協調性を強いられる環境が懲役生活のような非自発的な拘束として表現されます。</p>
+        </div>
+
+        <div class="recruit-banner">
+          ※指導員大募集中！初心者大歓迎！（非正規雇用型）
+        </div>
+      </div>
+    </div>
+
+    <!-- 2ページ目：組織図（ツリー図形式） -->
+    <div id="page-org" class="page-content">
+      <div class="card">
+        <h2>🏢 組織図</h2>
+        <p>当サーバーの運営体制および階級構造のツリー図です。</p>
+
+        <div class="org-tree">
+          <!-- サーバー長 (TOP) -->
+          <div class="org-box top-role">
+            <div class="org-role-title">TOP</div>
+            <div class="org-member-name">サーバー長（岸本権蔵）</div>
+            <div class="org-role-desc">サーバー全体の統括・最終決定権</div>
+          </div>
+
+          <!-- 接続線 -->
+          <div class="org-line"></div>
+
+          <!-- モデレーター (STAFF) -->
+          <div class="org-box">
+            <div class="org-role-title">STAFF</div>
+            <div class="org-member-name">モデレーター</div>
+            <div class="org-role-desc">サーバー内の管理・監視・秩序の維持</div>
+          </div>
+
+          <!-- 接続線 -->
+          <div class="org-line"></div>
+
+          <!-- 一般メンバー (MEMBER) -->
+          <div class="org-box">
+            <div class="org-role-title">MEMBER</div>
+            <div class="org-member-name">一般メンバー</div>
+            <div class="org-role-desc">サーバー在籍メンバー（入所者）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3ページ目：サーバーの歴史 -->
+    <div id="page-history" class="page-content">
+      <div class="card">
+        <h2>📜 サーバーの歴史</h2>
+        <p>当サーバーが歩んできた軌跡とこれまでの出来事です。</p>
+        <br>
+
+        <ul class="history-list">
+          <li class="history-item">
+            <div class="history-date">2024年 6/11</div>
+            <div class="history-text">変人の集いとしてサーバーを始動。</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2024年 11/19</div>
+            <div class="history-text">StatingLake824がサーバーをブースト。初めてサーバーレベル1へ</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2025年 5/1</div>
+            <div class="history-text">サーバーや収監所からの要請で共通財産ロッカーサービスを開始。</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2025年 5/3</div>
+            <div class="history-text">先行体験として、特別青少年再教育第一収監所をPre releaseを開始。特別青少年第一収監所 指導員指導ユニットがサーバーをブースト。</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2025年 5/4</div>
+            <div class="history-text">特別青少年再教育第一収監所を正式リリースを開始。サーバーロールを追加。</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2025年 10/16</div>
+            <div class="history-text">サーバーの方針を変更。サーバーの規定などを明確化。</div>
+          </li>
+          <li class="history-item">
+            <div class="history-date">2026年 3/20</div>
+            <div class="history-text">一部の再教育の全課程を修了した者が出所。</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4ページ目：支援者 -->
+    <div id="page-supporters" class="page-content">
+      <div class="card">
+        <h2>💎 支援者一覧</h2>
+        <p>当サーバーの発展および運営にご支援・ブーストをいただいた皆様です。</p>
+
+        <div class="supporter-grid">
+          <div class="supporter-card">
+            <div class="supporter-badge">🚀 SERVER BOOSTER（2024.11.19）</div>
+            <div class="supporter-name">StatingLake824</div>
+            <div class="supporter-desc">サーバー初のブーストを実施し、サーバーレベル1到達に貢献。</div>
+          </div>
+
+          <div class="supporter-card">
+            <div class="supporter-badge">🚀 SERVER BOOSTER（2025.05.03）</div>
+            <div class="supporter-name">特別青少年第一収監所 指導員指導ユニット</div>
+            <div class="supporter-desc">Pre release開始時にサーバーブーストを実施し、環境整備を支援。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5ページ目：よくある質問 -->
+    <div id="page-faq" class="page-content">
+      <div class="card">
+        <h2>❓ よくある質問 (FAQ)</h2>
+        <p>入所者（メンバー）からよく寄せられる質問と回答です。</p>
+        <br>
+
+        <div class="faq-item">
+          <div class="faq-q">Q. 初めて参加しましたが、まず何をすればいいですか？</div>
+          <div class="faq-a">A. まずは「はじめに」のページを熟読し、当収監所の理念と規律を理解してください。その後、チャットのルールを確認して適宜ご参加ください。</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q. ここでの発言は本当ですか？</div>
+          <div class="faq-a">A. サーバーや収監所での発言の大半は基本的にはジョークです。ユーモアだと思ってください。</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q. patronとは何ですか。？</div>
+          <div class="faq-a">A.patronとはサーバーの支援をしてくださる方々の総称です。具体的にはサーバーブーストなどです。</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Q. モデレーターとはなんですか？何をするんですか？</div>
+          <div class="faq-a">A. モデレーターとは、サーバーの管理をする人です。具体的にはサーバーでの依頼などを受け修正を行います。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6ページ目：関連リンク -->
+    <div id="page-links" class="page-content">
+      <div class="card">
+        <h2>🔗 関連リンク</h2>
+        <p>特別青少年再教育第一収監所（Discordサーバー）への参加はこちらから。</p>
+        <a href="https://discord.gg/yUvcBYexvY" target="_blank" class="btn-link">Discordサーバーに参加する</a>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function showPage(pageId, clickedButton) {
+      const pages = document.querySelectorAll('.page-content');
+      pages.forEach(page => page.classList.remove('active'));
+
+      const buttons = document.querySelectorAll('.menu-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      document.getElementById(pageId).classList.add('active');
+      clickedButton.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
